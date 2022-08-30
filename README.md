@@ -1,7 +1,7 @@
-##
-Welcome to this mini tutorial:-----
 
-Here we are going to learn some basics about Microfrontends.
+# Welcome to Microfrontends Mini Tutorial:-
+
+Here we are going to learn some basics of Microfrontends.
 
 
 The term Micro Frontends first came up in ThoughtWorks Technology Radar at the end of 2016. 
@@ -29,11 +29,14 @@ Let's not get into the theory black hole...
 Let's just start some basic practical.
 
 
-***
+## Practical
 We are going to create new app to host the microfrontend.
 
 Command to create microfrontends app
--> npx create-mf-app
+
+```bash
+    npx create-mf-app
+```
 
 select the project type...
 host
@@ -53,16 +56,21 @@ press the enter button.
 
 
 
+```bash
+    cd host
+    npm install
+    npm start
+```
 
-▶️ cd host
-▶️ npm install
-▶️ npm start
 
 ***
 Repeat the same process to create the remote app in the same directory where host project exists.
 
 Command to create microfrontends app
--> npx create-mf-app
+
+```bash
+    npx create-mf-app
+```
 
 select the project type...
 remote
@@ -83,7 +91,14 @@ press the enter button.
 
 
 
-▶️ cd host
-▶️ npm install
-▶️ npm start
+```bash
+    cd host
+    npm install
+    npm start
+```
+
+
+## Author
+
+- [@harihar99](https://github.com/Harihar99)
 
