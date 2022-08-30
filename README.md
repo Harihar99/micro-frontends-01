@@ -98,6 +98,105 @@ press the enter button.
 ```
 
 
+Now add some code of your choice in the remote app.
+
+Here I am creating one new component named as Counter.jsx.
+
+Now we need to expose this code to host. 
+For that to happen, We must add those filenames inside the exposes from plugins which is written in webpack.config.js from remote directory.
+
+for example
+```
+ plugins: [
+    new ModuleFederationPlugin({
+      name: "remote",
+      filename: "remoteEntry.js",
+      remotes: {},
+      /* See here */
+      exposes: {
+        "./Counter": "./src/Counter.jsx",
+      },
+      shared: {
+        ...deps,
+        "solid-js": {
+          singleton: true,
+          requiredVersion: deps["solid-js"],
+        },
+      },
+    })
+```
+Restart the remote app after editing the webpack.
+
+Now now file named remoteEntry.js got created.
+
+check on below url
+```
+    http://localhost:<remotePortNo>/remoteEntry.js
+```
+
+now we need to connect the remote app to the host.
+To do that we have to add above link inside the remotes from plugins which is written in webpack.config.js from host directory.
+
+
+for example
+```
+    plugins: [
+    new ModuleFederationPlugin({
+      name: "host",
+      filename: "remoteEntry.js",
+      /* See here */
+      remotes: {
+        remote: "remote@http://localhost:3001/remoteEntry.js"
+      },
+      exposes: {},
+      shared: {
+        ...deps,
+        "solid-js": {
+          singleton: true,
+          requiredVersion: deps["solid-js"],
+        },
+      },
+    }),
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+    }),
+  ],
+```
+Restart the host app after editing the webpack.
+
+Now we can access all the components from the remote app in the host app.
+
+for example
+```
+    import { render } from "solid-js/web";
+
+    import "./index.scss";
+    /* Here we are importing Counter component from remote microfrontend app*/
+    import Counter from "remote/Counter";
+
+    const App = () => (
+    <div class="mt-10 text-3xl mx-auto max-w-6xl">
+        <div>Name: host</div>
+        <div>Framework: solid-js</div>
+        <div>Language: JavaScript</div>
+        <div>CSS: Tailwind</div>
+        <br />
+        <br />
+        <div>Content from remote frontend</div>
+        <br />
+        <Counter />
+    </div>
+    );
+    render(App, document.getElementById("app"));
+
+
+```
+
+
+
+
+
+
 ## Author
 
 - [@harihar99](https://github.com/Harihar99)
