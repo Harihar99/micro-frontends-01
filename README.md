@@ -1,5 +1,31 @@
-
 # Welcome to Microfrontends Mini Tutorial:-
+
+## clone or download
+```terminal
+    git clone https://github.com/Harihar99/micro-frontends-01.git
+
+```
+
+## Prerequisites
+- [Node](https://nodejs.org/en/download/) 
+- [npm](https://nodejs.org/en/download/package-manager/)
+
+
+## Running host frontend
+```terminal
+    cd host   // go to repository
+    npm i       // npm install packages
+    npm start
+```
+
+## Running remote frontend
+```terminal
+    cd remote   // go to repository
+    npm i       // npm install packages
+    npm start
+```
+
+# What are microfrontends?
 
 Here we are going to learn some basics of Microfrontends.
 
@@ -191,9 +217,6 @@ for example
 
 
 ```
-
-
-
 
 
 
